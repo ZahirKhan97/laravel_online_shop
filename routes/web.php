@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +44,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.delete');
 
+        // Sub category Routes
+        Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('sub-categories.index');
+        Route::get('/sub-categories/create', [SubCategoryController::class, 'create'])->name('sub-categories.create');
+        Route::post('/sub-categories', [SubCategoryController::class, 'store'])->name('sub-categories.store');
+        Route::get('/sub-categories/{subCategory}/edit', [SubCategoryController::class, 'edit'])->name('sub-categories.edit');
+        Route::put('/sub-categories/{subCategory}', [SubCategoryController::class, 'update'])->name('sub-categories.update');
+        Route::delete('/sub-categories/{subCategory}', [SubCategoryController::class, 'destroy'])->name('sub-categories.delete');
+
+
+
         Route::post('/upload-temp-image', [TempImagesController::class, 'create'])->name('temp-images.create');
-
-
 
         Route::get('/getSlug', function (Request $request) {
             $slug = '';
