@@ -32,7 +32,7 @@ use Illuminate\Support\Str;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, 'index'])->name('front.shop');
-
+Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.product');
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -76,6 +76,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('brands.edit');
         Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
+        Route::get('/get-products', [ProductController::class, 'getProducts'])->name('products.getProducts');
 
         Route::get('/product-subcategories', [ProductSubCategoryController::class, 'index'])->name('product-subcategories.index');
 

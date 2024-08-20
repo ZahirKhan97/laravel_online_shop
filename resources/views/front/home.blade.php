@@ -139,11 +139,11 @@
                           $productImage = $product->product_images->first();
                           @endphp
                           @if (!empty($productImage->image))
-                          <a href="" class="product-img">
+                          <a href="{{ route('front.product',$product->slug) }}" class="product-img">
                               <img class="card-img-top" src="{{ asset('uploads/product/small/'.$productImage->image) }}" alt="">
                           </a>
                           @else
-                          <a href="" class="product-img">
+                          <a href="{{ route('front.product',$product->slug) }}" class="product-img">
                               <img class="card-img-top" src="{{ asset('admin-assets/img/default-150x150.png') }}" alt="">
                           </a>
                           @endif
@@ -187,11 +187,11 @@
                           $productImage = $product->product_images->first();
                           @endphp
                           @if (!empty($productImage->image))
-                          <a href="" class="product-img">
+                          <a href="{{ route('front.product',$product->slug) }}" class="product-img">
                               <img class="card-img-top" src="{{ asset('uploads/product/small/'.$productImage->image) }}" alt="">
                           </a>
                           @else
-                          <a href="" class="product-img">
+                          <a href="{{ route('front.product',$product->slug) }}" class="product-img">
                               <img class="card-img-top" src="{{ asset('admin-assets/img/default-150x150.png') }}" alt="">
                           </a>
                           @endif

@@ -76,4 +76,21 @@ class ShopController extends Controller
         $data['sort'] = $request->get('sort');
         return view('front.shop', $data);
     }
+
+    public function product($slug)
+    {
+        $product = Product::where('slug', $slug)->with('product_images')->first();
+        if ($product == null) {
+            abort(404);
+        }
+        $relatedProducts = [];
+        // Fetch Related Products here
+        if ($product->related_products != "") {
+            $productsArray = explode(',', $product->related_products);
+            $relatedProducts = Product::whereIn('id', $productsArray)->with('product_images')->get();
+        }
+        $data['product'] = $product;
+        $data['relatedProducts'] = $relatedProducts;
+        return view('front.product', $data);
+    }
 }

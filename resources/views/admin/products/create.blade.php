@@ -38,13 +38,25 @@
                           <input readonly type="text" name="slug" id="slug" class="form-control" placeholder="Slug">	
                           <p class="error"></p>
                       </div>
-                  </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="mb-3">
+                          <label for="short_description">Short Description</label>
+                          <textarea name="short_description" id="short_description" cols="30" rows="10" class="summernote" placeholder="Short Description"></textarea>
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="description">Description</label>
                             <textarea name="description" id="description" cols="30" rows="10" class="summernote" placeholder="Description"></textarea>
                         </div>
-                    </div>                                            
+                    </div> 
+                    <div class="col-md-12">
+                      <div class="mb-3">
+                          <label for="shipping_returns">Shipping and Returns</label>
+                          <textarea name="shipping_returns" id="shipping_returns" cols="30" rows="10" class="summernote" placeholder="shipping_returns"></textarea>
+                      </div>
+                    </div>                                             
                   </div>
                 </div>	                                                                      
               </div>
@@ -84,40 +96,50 @@
                       </div>
                   </div>	                                                                      
               </div>
-                <div class="card mb-3">
-                  <div class="card-body">
-                      <h2 class="h4 mb-3">Inventory</h2>								
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="mb-3">
-                                  <label for="sku">SKU (Stock Keeping Unit)</label>
-                                  <input type="text" name="sku" id="sku" class="form-control" placeholder="sku">	
-                                  <p class="error"></p>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="mb-3">
-                                  <label for="barcode">Barcode</label>
-                                  <input type="text" name="barcode" id="barcode" class="form-control" placeholder="Barcode">	
-                              </div>
-                          </div>   
-                          <div class="col-md-12">
-                              <div class="mb-3">
-                                  <div class="custom-control custom-checkbox">
-                                    <input type="hidden" name="track_qty" value="No">
-                                      <input class="custom-control-input" type="checkbox" id="track_qty" name="track_qty" value="Yes" checked>
-                                      <label for="track_qty" class="custom-control-label">Track Quantity</label>
-                                      <p class="error"></p>
-                                  </div>
-                              </div>
-                              <div class="mb-3">
-                                  <input type="number" min="0" name="qty" id="qty" class="form-control" placeholder="Qty">	
-                                  <p class="error"></p>
-                              </div>
-                          </div>                                         
-                      </div>
-                  </div>	                                                                      
+              <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="h4 mb-3">Inventory</h2>								
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="sku">SKU (Stock Keeping Unit)</label>
+                                <input type="text" name="sku" id="sku" class="form-control" placeholder="sku">	
+                                <p class="error"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="barcode">Barcode</label>
+                                <input type="text" name="barcode" id="barcode" class="form-control" placeholder="Barcode">	
+                            </div>
+                        </div>   
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="hidden" name="track_qty" value="No">
+                                    <input class="custom-control-input" type="checkbox" id="track_qty" name="track_qty" value="Yes" checked>
+                                    <label for="track_qty" class="custom-control-label">Track Quantity</label>
+                                    <p class="error"></p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="number" min="0" name="qty" id="qty" class="form-control" placeholder="Qty">	
+                                <p class="error"></p>
+                            </div>
+                        </div>                                         
+                    </div>
+                </div>	                                                                      
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">	
+                  <h2 class="h4 mb-3">Related Products</h2>
+                  <div class="mb-3">
+                      <select multiple class="related-products w-100" name="related_products[]" id="related_products">
+                        
+                      </select>
+                  </div>
                 </div>
+              </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
@@ -196,6 +218,20 @@
 
 @section('customJs')
     <script>
+      $('.related-products').select2({
+        ajax: {
+            url: '{{ route("products.getProducts") }}',
+            dataType: 'json',
+            tags: true,
+            multiple: true,
+            minimumInputLength: 3,
+            processResults: function (data) {
+                return {
+                    results: data.tags
+                };
+            }
+        }
+      });
       $('#title').change(function(){
         var element = $(this);
         $('button[type=submit]').prop('disabled', true);
