@@ -277,7 +277,7 @@ class CartController extends Controller
                 'message' => $message
             ]);
         } else {
-            //
+            // Stripe Payment Integration Here
         }
     }
 

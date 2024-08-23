@@ -30,7 +30,7 @@ class ProductImageController extends Controller
         $destPath = public_path() . '/uploads/product/large/' . $imageName;
         $manager = new ImageManager(new Driver());
         $image = $manager->read($sourcePath);
-        $image->resize(1400, null, function ($constraint) {
+        $image->resize(1000, 1000, function ($constraint) {
             $constraint->aspectRatio();
         });
         $image->save($destPath);
