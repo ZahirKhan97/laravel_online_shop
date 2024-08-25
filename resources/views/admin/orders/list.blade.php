@@ -65,8 +65,10 @@
                 <span class="badge badge-danger">Pending</span>
                 @elseif($order->status == 'shipped')
                 <span class="badge badge-info">Shipped</span>
-                @else
+                @elseif($order->status == 'delivered')
                 <span class="badge badge-success">Delivered</span>
+                @else
+                <span class="badge badge-danger">Cancelled</span>
                 @endif
               </td>
               <td>$ {{ number_format($order->grand_total,2) }}</td>
