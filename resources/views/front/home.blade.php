@@ -147,7 +147,7 @@
                               <img class="card-img-top" src="{{ asset('admin-assets/img/default-150x150.png') }}" alt="">
                           </a>
                           @endif
-                          <a class="whishlist" href="222"><i class="far fa-heart"></i></a>                            
+                          <a class="whishlist" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);"><i class="far fa-heart"></i></a>                            
 
                           <div class="product-action">
                               <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }})">
@@ -195,7 +195,7 @@
                               <img class="card-img-top" src="{{ asset('admin-assets/img/default-150x150.png') }}" alt="">
                           </a>
                           @endif
-                          <a class="whishlist" href="222"><i class="far fa-heart"></i></a>                            
+                          <a class="whishlist" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);"><i class="far fa-heart"></i></a>                            
 
                           <div class="product-action">
                               <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }})">
