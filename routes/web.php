@@ -148,9 +148,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
         Route::post('/users', [UserController::class, 'store'])->name('users.store');
-        // Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
-        // Route::post('/order/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
-        // Route::post('/order/send-email/{id}', [OrderController::class, 'sendInvoiceEmail'])->name('orders.sendInvoiceEmail');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.delete');
+
 
         // Temp Images Create
         Route::post('/upload-temp-image', [TempImagesController::class, 'create'])->name('temp-images.create');
