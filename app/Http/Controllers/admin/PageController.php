@@ -71,7 +71,7 @@ class PageController extends Controller
         if ($page == null) {
             session()->flash('error', "Page not found");
             return response()->json([
-                'status' => false,
+                'status' => true,
             ]);
         }
         $validator = Validator::make($request->all(), [
@@ -104,7 +104,7 @@ class PageController extends Controller
         if ($page == null) {
             session()->flash('error', "Page not found");
             return response()->json([
-                'status' => false,
+                'status' => true,
             ]);
         }
 
