@@ -26,7 +26,7 @@ class TempImagesController extends Controller
             $destPath = public_path() . '/temp/thumb/' . $newName;
             $manager = new ImageManager(new Driver());
             $img = $manager->read($sourcePath);
-            $img->resize(300, 275);
+            $img->cover(300, 275);
             $img->save($destPath);
             return response()->json([
                 'status' => true,
