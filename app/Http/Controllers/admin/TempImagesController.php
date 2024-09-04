@@ -15,10 +15,15 @@ class TempImagesController extends Controller
         if ($request->image) {
             $image = $request->image;
             $ext = $image->getClientOriginalExtension();
-            $newName = time() . '.' . $ext;
+
             $tempImage = new TempImage();
+            $tempImage->name = 'TEST';
+            $tempImage->save();
+
+            $newName = $tempImage->id . '-' . time() . '.' . $ext;
             $tempImage->name = $newName;
             $tempImage->save();
+
             $image->move(public_path() . '/temp', $newName);
 
             // Generate Thumbnail
