@@ -190,7 +190,7 @@
         <div class="section-title">
             <h2>Latest Produsts</h2>
 
-           <h1> Hello Every One </h1>
+           <h1> Hello Every One updated</h1>
         </div>    
         <div class="row pb-3">
               @if ($latestProducts->isNotEmpty())
