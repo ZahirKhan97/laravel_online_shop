@@ -189,8 +189,6 @@
     <div class="container">
         <div class="section-title">
             <h2>Latest Produsts</h2>
-
-           <h1> Hello Every One</h1>
         </div>    
         <div class="row pb-3">
               @if ($latestProducts->isNotEmpty())
