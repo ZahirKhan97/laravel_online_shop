@@ -19,6 +19,8 @@ class FrontController extends BaseController
         $data['categories'] = $categories;
         $data['featuredProducts'] = $featuredProducts;
         $data['latestProducts'] = $latestProducts;
+        $data['products_images_path'] = asset('uploads/product/small') . "/";
+        $data['categories_images_path'] = asset('uploads/category/thumb') . "/";
         return $this->sendResponse($data, 'Home Products');
     }
 

@@ -42,6 +42,7 @@ class ShopController extends BaseController
         }
         $data['avgRating'] = $avgRating;
         $data['avgRatingPer'] = $avgRatingPer;
+        $data['products_images_path'] = asset('uploads/product/large') . "/";
         return $this->sendResponse($data, 'Single Product');
     }
 
