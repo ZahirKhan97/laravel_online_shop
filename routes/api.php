@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Apis\FrontController;
+use App\Http\Controllers\Apis\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('front')->group(function () {
+    Route::get('/', [FrontController::class, 'index']);
+    Route::get('/product/{slug}', [ShopController::class, 'product']);
 });
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
